@@ -1,13 +1,18 @@
 import PySimpleGUI as sg
 import time, pyautogui
 import multiprocessing
+import random
+import argparse
 
 def dontsleep():
     while True:
+        down,up =random.randint(1, 300),random.randint(1, 300)
         pyautogui.press('volumedown')
-        time.sleep(1)
+        print(f'volumedown - rest for ({down}) sec(s)')
+        time.sleep(down)
         pyautogui.press('volumeup')
-        time.sleep(300)
+        print(f'volumedown - rest for ({up}) sec(s)')
+        time.sleep(up)
 
 
 def KeepUI():
@@ -21,12 +26,23 @@ def KeepUI():
     p2.start()
     
     while True:
-        event, values = window.read()
+        event = window.read()
         if event == sg.WIN_CLOSED: # if user closes window or clicks cancel
             if p2.is_alive():
                 p2.terminate()
             break
 
 def main():
-    p1 = multiprocessing.Process(target = KeepUI)
-    p1.start()
+    parser = argparse.ArgumentParser(
+                    prog='keepmeup',
+                    description='Keeps your computer up :)')
+    parser.add_argument('--lunch', help='times out during lunch', action=argparse.BooleanOptionalAction)
+    parser.add_argument('--time', help='how long you want to stay up for', type=int)
+    args = parser.parse_args()
+    if args["lunch"]:
+        dontsleep()
+    elif args["time"]:
+        pass
+    else:
+        p1 = multiprocessing.Process(target = KeepUI)
+        p1.start()
