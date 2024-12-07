@@ -3,8 +3,8 @@ name = "waketfup"
 version = "1.0.1"
 description = "Keep windows away from sleeping"
 authors = [
-     {name = "Milton Chow"},
-     {name = "Michael Tai Wai Ho"},
+    "Milton Chow",
+    "Michael Tai Wai Ho"
 ]
 readme = "README.md"
 packages = [{include = "waketfup"}]
