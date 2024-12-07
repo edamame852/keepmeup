@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "keepmeup"
-version = "2.0.0"
+name = "waketfup"
+version = "1.0.0"
 description = "Keep windows away from sleeping"
 authors = ["Michael Tai Wai Ho","Milton Chow"]
 readme = "README.md"
-packages = [{include = "keepmeup"}]
+packages = [{include = "waketfup"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -16,4 +16,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-keepmeup = "keepmeup.main:main"
+waketfup = "waketfup.main:main"
